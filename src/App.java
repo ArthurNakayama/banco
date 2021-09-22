@@ -188,11 +188,11 @@ public class App {
                 case 8:
                     System.out.println("Listando todos os clientes");
                     System.out.println("---PF---");
-                    for (ClientePF cliente : banco.getClientesPF()) {
+                    for (Cliente cliente : banco.getClientesPF()) {
                         System.err.println("\t" + cliente.toString());
                     }
                     System.out.println("---PJ---");
-                    for (ClientePF cliente : banco.getClientesPF()) {
+                    for (Cliente cliente : banco.getClientesPJ()) {
                         System.err.println("\t" + cliente.toString());
                     }
                     System.out.println("######");

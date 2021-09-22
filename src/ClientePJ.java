@@ -10,6 +10,12 @@ public class ClientePJ extends Cliente {
         this.numeroFuncionarios = numeroFuncionarios;
     }
 
+    @Override
+    public String getDocumento(){
+        System.out.println("getDocumento ClientePJ");
+        return this.cnpj;
+    }
+
     public int getNumeroFuncionarios() {
         return numeroFuncionarios;
     }

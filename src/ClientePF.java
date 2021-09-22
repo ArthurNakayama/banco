@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class ClientePF extends Cliente{
     
     private String cpf;
@@ -11,6 +9,12 @@ public class ClientePF extends Cliente{
         
         this.cpf = cpf;
         this.anoNascimento = anoNascimento;
+    }
+
+
+    @Override
+    public String getDocumento(){
+        return this.cpf;
     }
 
     public String getCpf(){
