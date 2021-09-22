@@ -1,11 +1,14 @@
+import java.util.ArrayList;
+
 public class ClientePF extends Cliente{
     
     private String cpf;
     private int anoNascimento;
     
-    public ClientePF(String nome, String email, String cpf,   int anoNascimento) {
+    
+    public ClientePF(String nome, String email, String cpf, int anoNascimento) {
         super(nome,email);
-
+        
         this.cpf = cpf;
         this.anoNascimento = anoNascimento;
     }
@@ -18,13 +21,23 @@ public class ClientePF extends Cliente{
         return this.anoNascimento;
     }
 
-    @Override
-    public String umMetodo(){
-        return "Isso é um método específico da classe PF";
+    public String emailAniversario(){
+        String corpo="";
+
+        corpo+="Destinatario:"+getEmail();
+        corpo+="\nParabéns "+nome+", pelo seu aniversário!!!";
+
+        return corpo;
+
     }
 
     @Override
+    public String metodoGenerico(){
+        return super.metodoGenerico();
+    }
+
+
     public String toString(){
-        return "Nome: "+nome+" Cpf:"+cpf+" E-mail:"+email+" Ano nascimento:"+anoNascimento;
+        return super.toString()+" CPF:"+cpf+" nascimento:"+anoNascimento;
     }
 }

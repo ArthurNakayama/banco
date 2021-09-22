@@ -3,7 +3,7 @@ public class ContaCorrente {
     //atributos => caracteristicas
     private String numero;
     private String agencia;
-    private double saldo;
+    protected double saldo;
     //Cliente
     private ClientePF dono;
 
@@ -20,7 +20,7 @@ public class ContaCorrente {
         this(numero,agencia,dono,0.0);
     }
     
-    boolean sacar(double valor){
+    public boolean sacar(double valor){
         if(valor <= saldo){
             saldo -= valor;
             return true;
@@ -28,7 +28,7 @@ public class ContaCorrente {
         return false;
     }
 
-    boolean depositar(double valor){
+    public boolean depositar(double valor){
         if(valor > 0){
             saldo += valor;
             return true;
@@ -52,8 +52,6 @@ public class ContaCorrente {
         return this.dono;
     }
 
-    public String toString(){
-        return " Agência: "+agencia+" Número: "+numero+" Saldo R$:"+saldo+" Dono:["+dono+"]";
-    }
+    //toString
 
 }

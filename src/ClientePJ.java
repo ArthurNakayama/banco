@@ -1,13 +1,13 @@
-public class ClientePJ extends Cliente{
+public class ClientePJ extends Cliente {
     
     private String cnpj;
     private int numeroFuncionarios;
 
     public ClientePJ(String nome, String email, String cnpj, int numeroFuncionarios) {
         super(nome, email);
-        
+
         this.cnpj = cnpj;
-        this.setNumeroFuncionarios(numeroFuncionarios);
+        this.numeroFuncionarios = numeroFuncionarios;
     }
 
     public int getNumeroFuncionarios() {
@@ -18,11 +18,12 @@ public class ClientePJ extends Cliente{
         this.numeroFuncionarios = numeroFuncionarios;
     }
 
-    public String getCpnj() {
+    public String getCnpj() {
         return cnpj;
     }
 
     public String toString(){
-        return "Nome: "+getNome()+" E-mail:"+getEmail()+" CNPJ:"+cnpj+" Funcionários:"+numeroFuncionarios;
+        return "Nome:"+getNome()+" e-mail"+getEmail()+"CNPJ:"+cnpj+" funcionarios:"+numeroFuncionarios;
     }
+
 }

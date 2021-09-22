@@ -1,18 +1,26 @@
+
+
+
 public class AppTeste {
     
 
-    public static void main(String[] args){
-
-        ClientePF cliente = new ClientePF("Chico","chico@teste.com","001", 2001);
+    public static void main(String[] args) {
         
-        System.out.println(cliente.toString());
-        System.out.println(cliente.umMetodo());
-
-        ClientePJ empresa = new ClientePJ("Empresa Teste","empresa@teste.com","002/09-1",10);
+        ClientePF clientpf = new ClientePF("Chico","chico@teste.com","001.001.001-11",2001);
+        System.out.println(clientpf.toString());
         
-        System.out.println(empresa.toString());
-        System.out.println(empresa.umMetodo());
+        System.out.println(clientpf.emailAniversario());
+
+        System.out.println(clientpf.metodoGenerico());
+        System.out.println();
+
+        ClientePJ clientepj = new ClientePJ("Empresa Teste","empresa@teste.com","0001.0000/000-1", 10);
+        System.out.println(clientepj.toString());
+        System.out.println(clientepj.metodoGenerico());
+        
+
 
     }
+
 
 }
