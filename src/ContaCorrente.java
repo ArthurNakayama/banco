@@ -5,18 +5,18 @@ public class ContaCorrente {
     private String agencia;
     protected double saldo;
     //Cliente
-    private ClientePF dono;
+    private Cliente dono;
 
     
     //métodos => ações
-    public ContaCorrente(String numero, String agencia, ClientePF dono, double saldo){
+    public ContaCorrente(String numero, String agencia, Cliente dono, double saldo){
         this.numero = numero;
         this.agencia = agencia;
         this.saldo = saldo;
         this.dono = dono;
     }
 
-    public ContaCorrente(String numero, String agencia, ClientePF dono){
+    public ContaCorrente(String numero, String agencia, Cliente dono){
         this(numero,agencia,dono,0.0);
     }
     
@@ -48,10 +48,11 @@ public class ContaCorrente {
         return saldo;
     }
 
-    public ClientePF getDono(){
+    public Cliente getDono(){
         return this.dono;
     }
 
-    //toString
-
+    public String toString(){
+        return "Numero: "+numero+ " Agencia: "+agencia+ " Saldo: "+saldo+  " Dono: "+dono.getNome();
+    }
 }

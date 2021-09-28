@@ -33,7 +33,7 @@ public class App {
 
         Scanner scan = new Scanner(System.in);
 
-        String nome, cpf, agencia, numero, email, cnpj;
+        String nome, cpf, agencia, numero, email, cnpj, random;
         ClientePF clientePF;
         ClientePJ clientePJ;
         ContaCorrenteSimples contaSimples;
@@ -41,7 +41,7 @@ public class App {
         ContaPoupanca contaPoupanca;
 
         double valor, limite, txRendimento;
-        int opcao, anoNascimento, numeroFuncionarios;
+        int opcao, anoNascimento, numeroFuncionarios,escolhe;
 
         Banco banco = new Banco("Bando teste", "teste@banco.com");
 
@@ -112,30 +112,70 @@ public class App {
                     break;
 
                 case 5:
-                    System.out.println("Digite o cpf do cliente:");
-                    cpf = scan.nextLine();
-                    clientePF = banco.buscaClientePF(cpf);
-                    if (clientePF != null) {
-                        System.out.println("Cliente encontrado!");
-                        System.out.println("Digite o número da conta:");
-                        numero = scan.nextLine();
-                        System.out.println("Digite a agência da conta:");
-                        agencia = scan.nextLine();
-
-                        contaSimples = new ContaCorrenteSimples(numero, agencia, clientePF);
-
-                        if (banco.adicionaContaSimples(contaSimples)) {
-                            System.out.println("Conta criada com sucesso!!");
+                    System.out.println("Digite sua escolha: ");
+                    System.out.println("1)Pessoa Física");
+                    System.out.println("2)Pessoa Jurídica");
+                    escolhe = scan.nextInt();
+                    if(escolhe == 1){
+                        System.out.println("Digite o cpf do cliente:");
+                        scan.nextLine();
+                        cpf = scan.nextLine();
+                        clientePF = banco.buscaClientePF(cpf);
+                        if (clientePF != null) {
+                            System.out.println("Cliente encontrado!");
+                            System.out.println("Digite o número da conta:");
+                            numero = scan.nextLine();
+                            System.out.println("Digite a agência da conta:");
+                            agencia = scan.nextLine();
+    
+                            contaSimples = new ContaCorrenteSimples(numero, agencia, clientePF);
+    
+                            if (banco.adicionaContaSimples(contaSimples)) {
+                                System.out.println("Conta criada com sucesso!!");
+                            } else {
+                                System.out.println("Não foi possível criar a conta!");
+                            }
                         } else {
-                            System.out.println("Não foi possível criar a conta!");
+                            System.out.println("Cliente não encontrado!");
                         }
-                    } else {
-                        System.out.println("Cliente não encontrado!");
+                        System.out.println("######");
                     }
-                    System.out.println("######");
+                    else if(escolhe == 2){
+                        System.out.println("Digite o cnpj do cliente:");
+                        scan.nextLine();
+                        cnpj = scan.nextLine();
+                        clientePJ = banco.buscaClientePJ(cnpj);
+                        if (clientePJ != null) {
+                            System.out.println("Cliente encontrado!");
+                            System.out.println("Digite o número da conta:");
+                            numero = scan.nextLine();
+                            System.out.println("Digite a agência da conta:");
+                            agencia = scan.nextLine();
+    
+                            contaSimples = new ContaCorrenteSimples(numero, agencia, clientePJ);
+    
+                            if (banco.adicionaContaSimples(contaSimples)) {
+                                System.out.println("Conta criada com sucesso!!");
+                            } else {
+                                System.out.println("Não foi possível criar a conta!");
+                            }
+                        } else {
+                            System.out.println("Cliente não encontrado!");
+                        }
+                        System.out.println("######");
+                    }
+                    else{
+                        System.out.println("Escolha inválida");
+                    }
                     break;
                 case 6:
+                System.out.println("Digite sua escolha: ");
+                System.out.println("1)Pessoa Física");
+                System.out.println("2)Pessoa Jurídica");
+                escolhe = scan.nextInt();
+                if(escolhe == 1){
                     System.out.println("Digite o cpf do cliente:");
+                    scan.nextLine();
                     cpf = scan.nextLine();
                     clientePF = banco.buscaClientePF(cpf);
                     if (clientePF != null) {
@@ -144,10 +184,8 @@ public class App {
                         numero = scan.nextLine();
                         System.out.println("Digite a agência da conta:");
                         agencia = scan.nextLine();
-                        System.out.println("Digite o limite da conta:");
-                        limite = scan.nextDouble();
 
-                        contaEspecial = new ContaCorrenteEspecial(numero, agencia, clientePF, 0.0, limite);
+                        contaEspecial = new ContaCorrenteEspecial(numero, agencia, clientePF);
 
                         if (banco.adicionaContaEspecial(contaEspecial)) {
                             System.out.println("Conta criada com sucesso!!");
@@ -158,9 +196,43 @@ public class App {
                         System.out.println("Cliente não encontrado!");
                     }
                     System.out.println("######");
+                }
+                else if(escolhe == 2){
+                    System.out.println("Digite o cnpj do cliente:");
+                    scan.nextLine();
+                    cnpj = scan.nextLine();
+                    clientePJ = banco.buscaClientePJ(cnpj);
+                    if (clientePJ != null) {
+                        System.out.println("Cliente encontrado!");
+                        System.out.println("Digite o número da conta:");
+                        numero = scan.nextLine();
+                        System.out.println("Digite a agência da conta:");
+                        agencia = scan.nextLine();
+
+                        contaEspecial = new ContaCorrenteEspecial(numero, agencia, clientePJ);
+
+                        if (banco.adicionaContaEspecial(contaEspecial)) {
+                            System.out.println("Conta criada com sucesso!!");
+                        } else {
+                            System.out.println("Não foi possível criar a conta!");
+                        }
+                    } else {
+                        System.out.println("Cliente não encontrado!");
+                    }
+                    System.out.println("######");
+                }
+                else{
+                    System.out.println("Escolha inválida");
+                }
                     break;
                 case 7:
+                System.out.println("Digite sua escolha: ");
+                System.out.println("1)Pessoa Física");
+                System.out.println("2)Pessoa Jurídica");
+                escolhe = scan.nextInt();
+                if(escolhe == 1){
                     System.out.println("Digite o cpf do cliente:");
+                    scan.nextLine();
                     cpf = scan.nextLine();
                     clientePF = banco.buscaClientePF(cpf);
                     if (clientePF != null) {
@@ -169,11 +241,8 @@ public class App {
                         numero = scan.nextLine();
                         System.out.println("Digite a agência da conta:");
                         agencia = scan.nextLine();
-                        System.out.println("Digite a taxa de rendimento:");
-                        txRendimento = scan.nextDouble();
 
                         contaPoupanca = new ContaPoupanca(numero, agencia, clientePF);
-                        contaPoupanca.setTxRendimento(txRendimento);
 
                         if (banco.adicionaContaPoupanca(contaPoupanca)) {
                             System.out.println("Conta criada com sucesso!!");
@@ -184,6 +253,34 @@ public class App {
                         System.out.println("Cliente não encontrado!");
                     }
                     System.out.println("######");
+                }
+                else if(escolhe == 2){
+                    System.out.println("Digite o cnpj do cliente:");
+                    scan.nextLine();
+                    cnpj = scan.nextLine();
+                    clientePJ = banco.buscaClientePJ(cnpj);
+                    if (clientePJ != null) {
+                        System.out.println("Cliente encontrado!");
+                        System.out.println("Digite o número da conta:");
+                        numero = scan.nextLine();
+                        System.out.println("Digite a agência da conta:");
+                        agencia = scan.nextLine();
+
+                        contaPoupanca = new ContaPoupanca(numero, agencia, clientePJ);
+
+                        if (banco.adicionaContaPoupanca(contaPoupanca)) {
+                            System.out.println("Conta criada com sucesso!!");
+                        } else {
+                            System.out.println("Não foi possível criar a conta!");
+                        }
+                    } else {
+                        System.out.println("Cliente não encontrado!");
+                    }
+                    System.out.println("######");
+                }
+                else{
+                    System.out.println("Escolha inválida");
+                }
                     break;
                 case 8:
                     System.out.println("Listando todos os clientes");
@@ -200,15 +297,15 @@ public class App {
                 case 9:
                     System.out.println("Listando todas as contas");
                     System.out.println("---Simples---");
-                    for (ContaCorrenteSimples conta : banco.getContasSimples()) {
+                    for (ContaCorrente conta : banco.getContasSimples()) {
                         System.err.println("\t" + conta.toString());
                     }
                     System.out.println("---Especial---");
-                    for (ContaCorrenteEspecial conta : banco.getContasEspecial()) {
+                    for (ContaCorrente conta : banco.getContasEspecial()) {
                         System.err.println("\t" + conta.toString());
                     }
                     System.out.println("---Poupança---");
-                    for (ContaPoupanca conta : banco.getContasPoupanca()) {
+                    for (ContaCorrente conta : banco.getContasPoupanca()) {
                         System.err.println("\t" + conta.toString());
                     }
                     System.out.println("######");

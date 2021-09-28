@@ -5,12 +5,12 @@ public class ContaCorrenteEspecial extends ContaCorrente {
     
     
     //métodos => ações
-    public ContaCorrenteEspecial(String numero, String agencia, ClientePF dono, double saldo, double limite){
+    public ContaCorrenteEspecial(String numero, String agencia, Cliente dono, double saldo, double limite){
         super(numero, agencia, dono,saldo);
         this.limite = limite;
     }
 
-    public ContaCorrenteEspecial(String numero, String agencia, ClientePF dono){
+    public ContaCorrenteEspecial(String numero, String agencia, Cliente dono){
         this(numero,agencia,dono,0.0,0.0);
     }
     

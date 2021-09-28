@@ -4,13 +4,13 @@ public class ContaPoupanca extends ContaCorrente {
     private double txRendimento;
     
     //métodos => ações
-    public ContaPoupanca(String numero, String agencia, ClientePF dono, double saldo, double txRendimento){
+    public ContaPoupanca(String numero, String agencia, Cliente dono, double saldo, double txRendimento){
         super(numero, agencia, dono, saldo);
 
         this.txRendimento = txRendimento;
     }
 
-    public ContaPoupanca(String numero, String agencia, ClientePF dono){
+    public ContaPoupanca(String numero, String agencia, Cliente dono){
         this(numero,agencia,dono,0.0,0.1);
     }
     

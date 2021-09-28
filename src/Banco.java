@@ -10,15 +10,14 @@ public class Banco {
 
     private String nome;
     private String email;
+    
 
     // private ArrayList<ClientePF> clientesPF;
     // private ArrayList<ClientePJ> clientesPJ;
 
     private ArrayList<Cliente> clientes;
 
-    private ArrayList<ContaCorrenteSimples> contasSimples;
-    private ArrayList<ContaCorrenteEspecial> contasEspecial;
-    private ArrayList<ContaPoupanca> contasPoupanca;
+    private ArrayList<ContaCorrente> contaCorrente;
 
     public Banco(String nome, String email) {
         this.nome = nome;
@@ -26,9 +25,7 @@ public class Banco {
 
         this.clientes = new ArrayList<>();
 
-        this.contasSimples = new ArrayList<>();
-        this.contasEspecial = new ArrayList<>();
-        this.contasPoupanca = new ArrayList<>();
+        this.contaCorrente = new ArrayList<>();
     }
 
     private boolean adicionaCliente(Cliente cliente){
@@ -76,75 +73,55 @@ public class Banco {
         return (ClientePJ)buscaCliente(cnpj);
     }
 
+    public ContaCorrente buscaContaCorrente(String numero, String agencia){
 
+        for (ContaCorrente c : contaCorrente) {
+            if (c.getAgencia().equals(agencia) && c.getNumero().equals(numero)) {
+                return c;
+            }
+        }
+        return null;
+    }
 
+    public boolean adicionaConta(ContaCorrente conta){
 
-
-
-
-
-
-
-
-
-
-
-
-    public boolean adicionaContaSimples(ContaCorrenteSimples conta) {
-
-        if (buscaContaSimples(conta.getNumero(), conta.getAgencia()) == null) {
-            contasSimples.add(conta);
+        if (buscaContaCorrente(conta.getNumero(), conta.getAgencia()) == null) {
+            contaCorrente.add(conta);
             return true;
         }
         return false;
+
+    }
+
+    public boolean adicionaContaSimples(ContaCorrenteSimples conta) {
+
+
+        return adicionaConta(conta);
     }
 
     public ContaCorrenteSimples buscaContaSimples(String numero, String agencia) {
 
-        for (ContaCorrenteSimples c : contasSimples) {
-            if (c.getAgencia().equals(agencia) && c.getNumero().equals(numero)) {
-                return c;
-            }
-        }
-        return null;
+        return (ContaCorrenteSimples) buscaContaCorrente(numero, agencia);
     }
 
     public boolean adicionaContaEspecial(ContaCorrenteEspecial conta) {
 
-        if (buscaContaEspecial(conta.getNumero(), conta.getAgencia()) == null) {
-            contasEspecial.add(conta);
-            return true;
-        }
-        return false;
+        return adicionaConta(conta);
     }
 
     public ContaCorrenteEspecial buscaContaEspecial(String numero, String agencia) {
 
-        for (ContaCorrenteEspecial c : contasEspecial) {
-            if (c.getAgencia().equals(agencia) && c.getNumero().equals(numero)) {
-                return c;
-            }
-        }
-        return null;
+        return (ContaCorrenteEspecial) buscaContaCorrente(numero, agencia);
     }
 
     public boolean adicionaContaPoupanca(ContaPoupanca conta) {
 
-        if (buscaContaPoupanca(conta.getNumero(), conta.getAgencia()) == null) {
-            contasPoupanca.add(conta);
-            return true;
-        }
-        return false;
+        return adicionaConta(conta);
     }
 
     public ContaPoupanca buscaContaPoupanca(String numero, String agencia) {
-
-        for (ContaPoupanca c : contasPoupanca) {
-            if (c.getAgencia().equals(agencia) && c.getNumero().equals(numero)) {
-                return c;
-            }
-        }
-        return null;
+     
+        return (ContaPoupanca) buscaContaCorrente(numero, agencia);
     }
 
     public String getEmail() {
@@ -186,16 +163,43 @@ public class Banco {
 
     }
 
-    public ArrayList<ContaCorrenteSimples> getContasSimples() {
-        return this.contasSimples;
+    public ArrayList<ContaCorrente> getContasSimples() {
+
+        ArrayList<ContaCorrente> retorno = new ArrayList<>();
+
+        for(ContaCorrente c:contaCorrente){
+            if(c instanceof ContaCorrenteSimples){
+                retorno.add(c);
+            }
+        }
+
+        return retorno;
     }
 
-    public ArrayList<ContaCorrenteEspecial> getContasEspecial() {
-        return this.contasEspecial;
+    public ArrayList<ContaCorrente> getContasEspecial() {
+
+        ArrayList<ContaCorrente> retorno = new ArrayList<>();
+
+        for(ContaCorrente c:contaCorrente){
+            if(c instanceof ContaCorrenteEspecial){
+                retorno.add(c);
+            }
+        }
+
+        return retorno;
     }
 
-    public ArrayList<ContaPoupanca> getContasPoupanca() {
-        return this.contasPoupanca;
+    public ArrayList<ContaCorrente> getContasPoupanca() {
+
+        ArrayList<ContaCorrente> retorno = new ArrayList<>();
+
+        for(ContaCorrente c:contaCorrente){
+            if(c instanceof ContaPoupanca){
+                retorno.add(c);
+            }
+        }
+
+        return retorno;
     }
 
 }
